@@ -7,10 +7,9 @@ public class Calcular
     private int dificuldade;
     private int valor1;
     private int valor2;
-    private int valorTotal;
     private int resultado;
     private int operacao;
-    String op;
+    private String op;
 
 
     public Calcular(int dificuldade)
@@ -21,62 +20,114 @@ public class Calcular
 
         if (dificuldade == 1)
         {
-            valor2 = rand.nextInt(10);
-            valor1 = rand.nextInt(10);
+            this.valor2 = rand.nextInt(10);
+            this.valor1 = rand.nextInt(10);
         }
         else if (dificuldade == 2)
         {
-            valor2 = rand.nextInt(100);
-            valor1 = rand.nextInt(100);
+            this.valor2 = rand.nextInt(100);
+            this.valor1 = rand.nextInt(100);
         }
         else if (dificuldade == 3)
         {
-            valor2 = rand.nextInt(1000);
-            valor1 = rand.nextInt(1000);
+            this.valor2 = rand.nextInt(1000);
+            this.valor1 = rand.nextInt(1000);
         }
         else if (dificuldade == 4)
         {
-            valor2 = rand.nextInt(10000);
-            valor1 = rand.nextInt(10000);
+            this.valor2 = rand.nextInt(10000);
+            this.valor1 = rand.nextInt(10000);
         }
         else
         {
-            valor2 = rand.nextInt(100000);
-            valor1 = rand.nextInt(100000);
+            this.valor2 = rand.nextInt(100000);
+            this.valor1 = rand.nextInt(100000);
         }
 
         switch (this.getOperacao())
         {
             case 0:
                 op = "Soma";
-                valorTotal = valor1 + valor2;
                 break;
             case 1:
                 op = "Subtrair";
-                valorTotal = valor1 - valor2;
                 break;
             case 2:
                 op="Multiplicar";
-                valorTotal = valor1 * valor2;
                 break;
         }
     }
 
     public String toString()
     {
-        return "Dificuldade: "+getDificuldade()+"\nOperação: "+op+"\nValor 1: "+getValor1()+"\nValor 2: "+getValor2();
+        return "Dificuldade: "+getDificuldade()+
+                "\nOperação: "+getOp()+
+                "\nValor 1: "+getValor1()+
+                "\nValor 2: "+getValor2();
+    }
+
+    public boolean somar (int resultado)
+    {
+        this.resultado = this.getValor1() + this.getValor2();
+        boolean certo = false;
+
+        if (resultado == this.resultado)
+        {
+            System.out.println("Resposta Correto");
+            certo = true;
+        }
+        else
+        {
+            System.out.println("Resposta Incorreta!");
+        }
+        System.out.println(this.getValor1()+" + "+this.getValor2()+" = "+this.getResultado());
+        return certo;
+    }
+
+    public boolean subtrair (int resultado)
+    {
+        this.resultado = this.getValor1() - this.getValor2();
+        boolean certo = false;
+
+        if (resultado == this.resultado)
+        {
+            System.out.println("Resposta Correto");
+            certo = true;
+        }
+        else
+        {
+            System.out.println("Resposta Incorreta!");
+        }
+        System.out.println(this.getValor1()+" - "+this.getValor2()+" = "+this.getResultado());
+        return certo;
+    }
+
+    public boolean multiplicar (int resultado)
+    {
+        this.resultado = this.getValor1() * this.getValor2();
+        boolean certo = false;
+
+        if (resultado == this.resultado)
+        {
+            System.out.println("Resposta Correto");
+            certo = true;
+        }
+        else
+        {
+            System.out.println("Resposta Incorreta!");
+        }
+        System.out.println(this.getValor1()+" * "+this.getValor2()+" = "+this.getResultado());
+        return certo;
     }
 
     public int getDificuldade()
     {
         return dificuldade;
     }
-
     public void setDificuldade(int dificuldade)
     {
         this.dificuldade = dificuldade;
     }
-
     public int getValor1()
     {
         return valor1;
@@ -85,11 +136,6 @@ public class Calcular
     {
         return valor2;
     }
-    public int getValorTotal()
-    {
-        return valorTotal;
-    }
-
     public int getOperacao()
     {
         return operacao;
@@ -98,8 +144,5 @@ public class Calcular
     {
         return resultado;
     }
-    public void setResultado(int resultado)
-    {
-        this.resultado = resultado;
-    }
+    public String getOp() { return op; }
 }
